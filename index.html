@@ -6,16 +6,34 @@
   <title>ElevateX – Education | Employment</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
       background: #f4f8fc;
       color: #222;
     }
+    nav {
+      background: #ffffff;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav a {
+      margin-right: 1.5rem;
+      color: #003366;
+      text-decoration: none;
+      font-weight: bold;
+    }
     header {
       background: #002b5c;
       color: white;
-      padding: 2.5rem 1.5rem;
+      padding: 3rem 1.5rem;
       text-align: center;
     }
     header h1 {
@@ -26,6 +44,20 @@
       font-style: italic;
       margin-top: 0.5rem;
     }
+    .cta-button {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: #004d99;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .cta-button:hover {
+      background: #0066cc;
+    }
     section {
       padding: 2rem 1.5rem;
       max-width: 900px;
@@ -33,6 +65,7 @@
     }
     h2 {
       color: #003366;
+      scroll-margin-top: 100px;
     }
     .card {
       background: white;
@@ -46,35 +79,64 @@
       font-size: 0.9rem;
       padding: 1rem;
       background: #e0eaf1;
+      margin-top: 2rem;
+    }
+    @media screen and (max-width: 600px) {
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+      .cta-button {
+        display: block;
+        margin: 1rem auto 0 auto;
+      }
     }
   </style>
 </head>
 <body>
 
+  <nav>
+    <a href="#about">About</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#business">Model</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
   <header>
     <h1>ElevateX</h1>
     <p>Where Education Meets Employment</p>
+    <a href="#about" class="cta-button">Get Started with ElevateX</a>
   </header>
 
-  <section>
+  <section id="about">
     <h2>Our Platform</h2>
     <div class="card">
-      <p><strong>ElevateX</strong> is a web-based platform connecting aspiring workers with experienced industry professionals.</p>
-      <p>Before entering the workforce, candidates undergo curated training courses provided by those same professionals—ensuring real-world readiness before job onboarding.</p>
+      <p><strong>ElevateX</strong> connects aspiring workers with experienced industry professionals for pre-employment training designed to ensure real-world readiness and workforce impact.</p>
     </div>
+  </section>
 
+  <section id="how-it-works">
     <h2>How It Works</h2>
     <div class="card">
       <ul>
         <li><strong>Connect</strong> with skilled professionals across industries</li>
-        <li><strong>Train</strong> through online modules and mentoring</li>
-        <li><strong>Apply</strong> for employment opportunities upon course completion</li>
+        <li><strong>Train</strong> through curated courses & mentoring</li>
+        <li><strong>Apply</strong> for employment after upskilling</li>
       </ul>
     </div>
+  </section>
 
+  <section id="business">
     <h2>Business Model</h2>
     <div class="card">
-      <p>The platform is free for users. We sustain it by running tasteful ads from trustworthy brands—supporting growth while keeping the core mission accessible to all.</p>
+      <p>ElevateX is free for learners. Our platform is sustained by carefully vetted advertising partners—balancing purpose and sustainability without compromising user experience.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="card">
+      <p>Have ideas or want to collaborate? Drop us a message at <strong>contact@elevatex.org</strong> or connect via LinkedIn soon.</p>
     </div>
   </section>
 
@@ -84,3 +146,4 @@
 
 </body>
 </html>
+
