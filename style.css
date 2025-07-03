@@ -28,6 +28,17 @@ section h2 {
   font-weight: 700;
 }
 
+footer {
+  background-color: #f0f8ff; /* soft but visible */
+  color: #222; /* strong contrast text */
+  text-align: center;
+  padding: 15px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-top: 1px solid #ddd;
+}
+
+
 @media (max-width: 768px) {
   .section-box {
     margin: 20px;
