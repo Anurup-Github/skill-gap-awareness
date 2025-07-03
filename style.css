@@ -1,7 +1,6 @@
 body {
-  font-family: 'Inter', sans-serif;
-  margin: 0;
-  background: url('background.jpg') no-repeat center center fixed;
+  background-image: url('background.jpg');
   background-size: cover;
-  color: #ffffff;
+  background-position: center;
+  background-repeat: no-repeat;
 }
