@@ -29,13 +29,12 @@ section h2 {
 }
 
 footer {
-  background-color: #111; /* soft but visible */
-  color: #eee; /* strong contrast text */
+  background-color: #0b1e3f;  /* deep navy blue (or your site theme color) */
+  color: #ffffff;             /* bright white text */
   text-align: center;
   padding: 15px 20px;
   font-size: 1rem;
   font-weight: 500;
-  border-top: 1px solid #ddd;
 }
 
 
