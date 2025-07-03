@@ -29,8 +29,8 @@ section h2 {
 }
 
 footer {
-  background-color: #f0f8ff; /* soft but visible */
-  color: #222; /* strong contrast text */
+  background-color: #111; /* soft but visible */
+  color: #eee; /* strong contrast text */
   text-align: center;
   padding: 15px 20px;
   font-size: 1rem;
