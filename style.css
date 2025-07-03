@@ -29,25 +29,6 @@ section h2 {
   font-weight: 700;
 }
 
-.contact-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  padding: 1rem 2rem;
-  color: #ffffff;
-  font-size: 0.95rem;
-}
-
-.contact-row p {
-  margin: 0;
-}
-
-.contact-row a {
-  color: #ffffff;
-  text-decoration: underline;
-  margin-left: 0.3rem;
-}
-
 footer {
   background-color: #0b1e3f;  /* deep navy blue (or your site theme color) */
   color: #ffffff;             /* bright white text */
@@ -72,5 +53,22 @@ footer {
     display: block;
     margin: 10px 0;
   }
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px 20px;
+}
+
+.label {
+  text-align: right;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.value {
+  text-align: left;
+  word-break: break-word;
 }
 
