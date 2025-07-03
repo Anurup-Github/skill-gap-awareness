@@ -18,6 +18,15 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+section h2 {
+  font-size: 2rem;
+  color: #ffffff; /* bright white */
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6); /* optional glow for contrast */
+  font-weight: 700;
+}
 
 @media (max-width: 768px) {
   .section-box {
