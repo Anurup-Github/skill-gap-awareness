@@ -29,23 +29,24 @@ section h2 {
   font-weight: 700;
 }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 10px 20px;
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  color: #ffffff;
+  font-size: 0.95rem;
 }
 
-.label {
-  text-align: right;
-  font-weight: bold;
-  white-space: nowrap;
+.contact-row p {
+  margin: 0;
 }
 
-.value {
-  text-align: left;
-  word-break: break-word;
+.contact-row a {
+  color: #ffffff;
+  text-decoration: underline;
+  margin-left: 0.3rem;
 }
-
 
 footer {
   background-color: #0b1e3f;  /* deep navy blue (or your site theme color) */
