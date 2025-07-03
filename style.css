@@ -9,14 +9,15 @@ body {
 }
 
 .section-box {
-  background-color: rgba(255, 255, 255, 0.9); /* semi-transparent white */
-  color: #000;
+  background-color: rgba(255, 255, 255, 0.95); /* semi-transparent white */
+  color: #111; /* <-- fix: ensure text inside is dark */
   padding: 20px;
   margin: 30px auto;
   border-radius: 10px;
   max-width: 800px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
 
 @media (max-width: 768px) {
   .section-box {
