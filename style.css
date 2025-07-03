@@ -29,31 +29,23 @@ section h2 {
   font-weight: 700;
 }
 
-.contact-card {
+.contact-grid {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 10px 20px;
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-  background: #f9f9f9;
-  border-radius: 12px;
-  font-size: 1rem;
-}
-
-.contact-row {
-  display: contents; /* Allows grid layout per row without wrapper */
 }
 
 .label {
   text-align: right;
-  font-weight: 500;
-  padding-right: 10px;
+  font-weight: bold;
+  white-space: nowrap;
 }
 
 .value {
   text-align: left;
+  word-break: break-word;
 }
+
 
 footer {
   background-color: #0b1e3f;  /* deep navy blue (or your site theme color) */
