@@ -126,7 +126,7 @@ footer {
 }
 
 /* Course Card Styling */
-.section-box {
+.course-card {
   background: rgba(255, 255, 255, 0.1);
   padding: 2rem;
   border-radius: 10px;
@@ -135,7 +135,7 @@ footer {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.section-box:hover {
+.course-card:hover {
   transform: translateY(-5px);
   background: rgba(255, 255, 255, 0.15);
 }
@@ -147,7 +147,7 @@ footer {
 }
 
 /* Icons inside cards */
-.section-box i {
+.course-card i {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   display: block;
@@ -155,13 +155,13 @@ footer {
 }
 
 /* Headings and text */
-.section-box h3 {
+.course-card h3 {
   margin: 0.5rem 0;
   font-size: 1.3rem;
   color: #ffffff;
 }
 
-.section-box p {
+.course-card p {
   font-size: 0.95rem;
   color: #dddddd;
 }
