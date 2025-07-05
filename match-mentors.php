@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "elevatex";
+$servername = "sql300.infinityfree.com";
+$username = "if0_39401656";
+$password = "hrWPzzrEVfWKTi";
+$dbname = "if0_39401656_elevatex";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
