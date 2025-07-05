@@ -1,168 +1,50 @@
-body {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-              url('background.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: #fff; /* Default text color for better readability */
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+<?php
+// Enable error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Replace these with your actual InfinityFree database credentials
+$servername = "sql300.infinityfree.com";         // e.g., sql301.epizy.com
+$username = "if0_39401656";              // your InfinityFree DB username
+$password = "hrWPzzrEVfWKTi";           // the password you set
+$dbname = "if0_39401656_elevatex";       // your full database name
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
 }
 
-.section-box {
-  background-color: rgba(255, 255, 255, 0.95); /* semi-transparent white */
-  color: #111; /* <-- fix: ensure text inside is dark */
-  padding: 20px;
-  margin: 30px auto;
-  border-radius: 10px;
-  max-width: 800px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  text-align: center;
+// Get form data safely
+$name = $_POST['name'] ?? '';
+$email = $_POST['email'] ?? '';
+$motivation = $_POST['motivation'] ?? '';
+$level = $_POST['level'] ?? '';
+$goal = $_POST['goal'] ?? '';
+$language = $_POST['language'] ?? '';
+
+// Prepare and bind
+$sql = "INSERT INTO registrations (name, email, motivation, level, goal, language)
+        VALUES (?, ?, ?, ?, ?, ?)";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("ssssss", $name, $email, $motivation, $level, $goal, $language);
+
+// Execute and redirect
+if ($stmt->execute()) {
+// URL encode each parameter to safely pass them
+$goal = urlencode($goal);
+$level = urlencode($level);
+$language = urlencode($language);
+
+error_log("Redirecting with: goal=$goal, level=$level, language=$language");
+
+header("Location: match-mentors.php?goal=$goal&level=$level&language=$language");
+exit();
+} else {
+  echo "Error: " . $stmt->error;
 }
-
-section h2 {
-  font-size: 2rem;
-  color: #ffffff; /* bright white */
-  text-align: center;
-  margin-top: 40px;
-  margin-bottom: 10px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.6); /* optional glow for contrast */
-  font-weight: 700;
-}
-
-footer {
-  background-color: #0b1e3f;  /* deep navy blue (or your site theme color) */
-  color: #ffffff;             /* bright white text */
-  text-align: center;
-  padding: 15px 20px;
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-
-@media (max-width: 768px) {
-  .section-box {
-    margin: 20px;
-    padding: 15px;
-  }
-
-  h1 {
-    font-size: 1.8rem;
-  }
-
-  nav a {
-    display: block;
-    margin: 10px 0;
-  }
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 10px 20px;
-}
-
-.label {
-  text-align: right;
-  font-weight: bold;
-  white-space: nowrap;
-}
-
-.value {
-  text-align: left;
-  word-break: break-word;
-}
-
-.registration-section {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 2rem;
-  border-radius: 10px;
-  max-width: 600px;
-  margin: 2rem auto;
-  color: #ffffff;
-}
-
-.registration-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.registration-form input,
-.registration-form textarea {
-  padding: 0.75rem;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-
-.registration-form button {
-  background-color: #004d99;
-  color: white;
-  padding: 0.8rem;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.registration-form button:hover {
-  background-color: #0066cc;
-}
-
-/* Course Grid Layout */
-.course-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
-}
-
-/* Make entire card clickable */
-.course-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-/* Course Card Styling */
-.course-card {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 10px;
-  text-align: center;
-  transition: transform 0.3s ease, background 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.course-card:hover {
-  transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.15);
-}
-
-/* Coming Soon Cards */
-.coming-soon {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-/* Icons inside cards */
-.course-card i {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  display: block;
-  color: #ffffff;
-}
-
-/* Headings and text */
-.course-card h3 {
-  margin: 0.5rem 0;
-  font-size: 1.3rem;
-  color: #ffffff;
-}
-
-.course-card p {
-  font-size: 0.95rem;
-  color: #dddddd;
-}
-
+//echo "Form submitted successfully. Data saved to database.";
+$conn->close();
+?>
