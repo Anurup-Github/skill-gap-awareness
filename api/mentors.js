@@ -15,9 +15,9 @@ export default async function handler(req, res) {
   const { data, error } = await supabase
     .from('mentors')
     .select('*')
-    .ilike('expertise', goal)
-    .ilike('level', level)
-    .ilike('language', language);
+    // .ilike('expertise', goal)
+    // .ilike('level', level)
+    // .ilike('language', language);
 
   if (error) {
     console.error("Supabase error:", error);
