@@ -3,6 +3,7 @@
 export default async function handler(req, res) {
   const { goal, level, language } = req.query;
 
+  console.log("Query received:", { goal, level, language });
   // TODO: Replace this with a real database query
   const mentors = [
     { name: "Ravi Sharma", expertise: "frontend", level: "beginner", language: "english", availability: "Weekends" },
