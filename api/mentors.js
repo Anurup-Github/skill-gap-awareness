@@ -11,11 +11,11 @@ export default async function handler(req, res) {
     { name: "Amit Verma", expertise: "fullstack", level: "advanced", language: "hindi", availability: "Weekdays" }
   ];
 
-  const matches = mentors.filter(m =>
-    m.expertise === goal &&
-    m.level === level &&
-    m.language === language
-  );
+ const matches = mentors.filter(m =>
+  m.expertise.toLowerCase() === goal.toLowerCase() &&
+  m.level.toLowerCase() === level.toLowerCase() &&
+  m.language.toLowerCase() === language.toLowerCase()
+);
 
   res.status(200).json({ matches });
 }
