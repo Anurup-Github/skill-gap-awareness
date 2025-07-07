@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Matched Mentors – ElevateX</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f9f9f9;
+    }
+    h2 {
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background: #007BFF;
+      color: white;
+    }
+    .no-match {
+      background: #fff3cd;
+      color: #856404;
+      padding: 1rem;
+      border: 1px solid #ffeeba;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<h2>🎯 Matched Mentors</h2>
+<div id="mentor-results">Loading...</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const goal = params.get("goal");
+const level = params.get("level");
+const language = params.get("language");
+
+fetch(`/api/match?goal=${goal}&level=${level}&language=${language}`)
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("mentor-results");
+    if (data.matches.length === 0) {
+      container.innerHTML = `<div class="no-match">
+        <strong>No mentors match your criteria yet.</strong><br>
+        We'll notify you when one is available!
+      </div>`;
+    } else {
+      const rows = data.matches.map(m => `
+        <tr>
+          <td>${m.name}</td>
+          <td>${m.expertise}</td>
+          <td>${m.level}</td>
+          <td>${m.language}</td>
+          <td>${m.availability}</td>
+        </tr>`).join("");
+      container.innerHTML = `
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Expertise</th>
+            <th>Level</th>
+            <th>Language</th>
+            <th>Availability</th>
+          </tr>
+          ${rows}
+        </table>`;
+    }
+  })
+  .catch(err => {
+    document.getElementById("mentor-results").innerHTML = `<p style="color:red;">Error loading mentors. Please try again later.</p>`;
+    console.error(err);
+  });
+</script>
+
+</body>
+</html>
