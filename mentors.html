@@ -49,7 +49,7 @@ const goal = params.get("goal");
 const level = params.get("level");
 const language = params.get("language");
 
-fetch(`/skill-gap-awareness/api/mentors?goal=${goal}&level=${level}&language=${language}`)
+fetch(`/api/mentors?goal=${goal}&level=${level}&language=${language}`)
   .then(res => res.json())
   .then(data => {
     const container = document.getElementById("mentor-results");
