@@ -1,21 +1,29 @@
-// api/match.js
+// api/mentors.js
+
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_ANON_KEY
+);
 
 export default async function handler(req, res) {
   const { goal, level, language } = req.query;
 
   console.log("Query received:", { goal, level, language });
-  // TODO: Replace this with a real database query
-  const mentors = [
-    { name: "Ravi Sharma", expertise: "frontend", level: "beginner", language: "english", availability: "Weekends" },
-    { name: "Ananya Das", expertise: "backend", level: "intermediate", language: "bengali", availability: "Evenings" },
-    { name: "Amit Verma", expertise: "fullstack", level: "advanced", language: "hindi", availability: "Weekdays" }
-  ];
 
- const matches = mentors.filter(m =>
-  m.expertise.toLowerCase() === goal.toLowerCase() &&
-  m.level.toLowerCase() === level.toLowerCase() &&
-  m.language.toLowerCase() === language.toLowerCase()
-);
+  const { data, error } = await supabase
+    .from('mentors')
+    .select('*')
+    .ilike('expertise', goal)
+    .ilike('level', level)
+    .ilike('language', language);
 
-  res.status(200).json({ matches });
+  if (error) {
+    console.error("Supabase error:", error);
+    return res.status(500).json({ error: "Failed to fetch mentors" });
+  }
+
+  console.log("Matched mentors:", data);
+  res.status(200).json({ matches: data });
 }
