@@ -1,5 +1,3 @@
-// api/mentors.js
-
 import { createClient } from '@supabase/supabase-js';
 
 const supabase = createClient(
@@ -12,12 +10,14 @@ export default async function handler(req, res) {
 
   console.log("Query received:", { goal, level, language });
 
-  const { data, error } = await supabase
-    .from('mentors')
-    .select('*')
-    // .ilike('expertise', goal)
-    // .ilike('level', level)
-    // .ilike('language', language);
+  // Build the query with ilike and wildcards for flexible matching
+  let query = supabase.from('mentors').select('*');
+
+  if (goal) query = query.ilike('expertise', `%${goal}%`);
+  if (level) query = query.ilike('level', `%${level}%`);
+  if (language) query = query.ilike('language', `%${language}%`);
+
+  const { data, error } = await query;
 
   if (error) {
     console.error("Supabase error:", error);
